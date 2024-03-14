@@ -76,6 +76,11 @@ public class Order {
          });
         */
 
+        repository().findById(outOfStock.getOrderId()).ifPresent(order ->{
+            
+            order.setStatus("OrderCancelled");
+            repository().save(order);
+        });
     }
     //>>> Clean Arch / Port Method
 
